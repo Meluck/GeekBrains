@@ -1,2 +1,3 @@
 # GeekBrains
-repo for GeekBrains home tasks
+Repo for GeekBrains home tasks
+branch == new_task
