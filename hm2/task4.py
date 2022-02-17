@@ -9,3 +9,4 @@ words = input('Введите набор слов\n').strip().split()
 
 for ind, string in enumerate(words):
     print(f'{ind + 1}: {string[:10]}')
+    
