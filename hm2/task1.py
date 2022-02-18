@@ -23,3 +23,4 @@ for el in multi_lst:
         print('dictionary')
     else:
         print('Unknown type')
+
