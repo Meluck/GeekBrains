@@ -18,5 +18,4 @@ try:
     else:
         print(my_func(num1, num2, num3))
 except Exception as ex:
-    print(exS)
-S
+    print(ex)
