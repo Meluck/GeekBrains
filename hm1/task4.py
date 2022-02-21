@@ -3,7 +3,7 @@
 # Для решения используйте цикл while и арифметические операции.
 
 if __name__ == '__main__':
-    print('GeekBrains homework #1, task 3')
+    print('GeekBrains homework #1, task 4')
 
     print('Solution number 1')
     num_str = input('Enter integer positive number:\n')
@@ -21,3 +21,7 @@ if __name__ == '__main__':
         max_dig_s = dig_str if dig_str > max_dig_s else max_dig_s
 
     print(f'max digit is {max_dig_s}')
+    
+    print('\nSolution number 3')
+    max_dig_2 = max([int(sym) for sym in num_str])
+    print(f'max digit is {max_dig_2}')
