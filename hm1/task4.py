@@ -15,7 +15,7 @@ if __name__ == '__main__':
     print(f'max digit is {max_dig}')
 
     print('\nSolution number 2')
-    print('Use the fact of ACII serial number coding:')
+    print('Use the fact of ASCII serial number coding:')
     max_dig_s = num_str[0]
     for dig_str in num_str:
         max_dig_s = dig_str if dig_str > max_dig_s else max_dig_s
