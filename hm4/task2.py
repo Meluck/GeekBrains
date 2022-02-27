@@ -9,6 +9,7 @@
 
 print('GeekBrains homework #4, task 2')
 
+
 try:
     data = [int(sym) for sym in input('Enter numbers\n').strip().split(sep=',')]
     res = [el for idx, el in enumerate(data[1:]) if data[idx + 1] > data[idx]]

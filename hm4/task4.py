@@ -8,6 +8,7 @@
 Результат: [23, 1, 3, 10, 4, 11]
 """
 
+
 print('GeekBrains homework #4, task 4')
 
 try:

@@ -6,6 +6,7 @@
 Подсказка: использовать функцию reduce().
 """
 
+
 from functools import reduce
 
 print('GeekBrains homework #4, task 5')
