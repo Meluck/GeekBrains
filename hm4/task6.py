@@ -11,6 +11,7 @@
 при котором повторение элементов списка прекратится.
 """
 
+
 from sys import argv
 from itertools import count, cycle
 
