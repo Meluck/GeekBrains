@@ -14,6 +14,8 @@
 from sys import argv
 from itertools import count, cycle
 
+print('GeekBrains homework #4, task 6')
+
 help_mes = f'This program has 2 modes:\n' \
            f'int: integer continues numbers generation\n' \
            f'rep: repeat of input sequence while number of' \
