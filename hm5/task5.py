@@ -21,7 +21,7 @@ def calc_sum(in_file_name):
         total_sum = 0
         for line in lines:
             total_sum += sum([float(sym) for sym in line.split()])
-        return  total_sum
+        return total_sum
 
 
 if __name__ == '__main__':
