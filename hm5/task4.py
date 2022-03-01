@@ -9,6 +9,9 @@ Four — 4
 Новый блок строк должен записываться в новый текстовый файл.
 """
 
+print('GeekBrains homework #5, task 4')
+
+
 trans_dir = {'one': 'Один',
              'two': 'Два',
              'three': 'Три',

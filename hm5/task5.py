@@ -7,6 +7,8 @@
 
 from random import random, randrange
 
+print('GeekBrains homework #5, task 5')
+
 
 def create_numeric_file(out_file_name, num_of_el):
     num_str_lst = [str(randrange(0, 1000) / 100) for i in range(num_of_el)]

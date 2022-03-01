@@ -11,6 +11,8 @@
 Петров 13749.32
 """
 
+print('GeekBrains homework #5, task 3')
+
 content_dir = {}
 try:
     with open('task3_file.txt', 'r', encoding='UTF-8') as file:

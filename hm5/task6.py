@@ -13,6 +13,9 @@
 Пример словаря: {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 """
 
+print('GeekBrains homework #5, task 6')
+
+
 filename = 'task6_input.txt'
 sub_dict = {}
 

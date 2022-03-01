@@ -18,6 +18,7 @@
 
 import json
 
+print('GeekBrains homework #5, task 7')
 
 firm_dict = {}
 total_profit = 0
@@ -31,7 +32,7 @@ try:
             profit, losses = float(profit), float(losses)
 
             # включаем в расчет средней прибыли только фирмы без убытков
-            if profit > losses:
+            if profit >= losses:
                 total_profit += profit - losses
                 firm_prof_counter += 1
 
