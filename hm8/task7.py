@@ -57,3 +57,4 @@ if __name__ == "__main__":
     print(f'{x1 - y1 == x2 - y2  = }')
     print(f'{x1 * y1 == x2 * y2  = }')
     print(f'{x1 / y1 == x2 / y2  = }')
+

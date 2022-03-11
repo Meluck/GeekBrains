@@ -8,8 +8,9 @@ def try_except_decorator(func):
     @wraps(func)
     def magic(self, *args, **kwards):
         try:
-            func(self, *args, **kwards)
+            return func(self, *args, **kwards)
         except Exception:
+            # вывод желтым цветом
             sys.stdout.write(f'\r\033[33m{traceback.format_exc()}')
             sys.stdout.write(f"\r\033[38m")
     return magic
@@ -51,4 +52,5 @@ def check_method_args(*types):
                 print(f'Unknown error: {ex}')
         return wrapper
     return check
+
 

@@ -5,6 +5,11 @@
 В базовом классе определите параметры, общие для приведённых типов.
 В классах-наследниках реализуйте параметры, уникальные для каждого типа оргтехники.
 
+5. Продолжить работу над первым заданием. Разработайте методы, которые отвечают
+за приём оргтехники на склад и передачу в определённое подразделение компании.
+Для хранения данных о наименовании и количестве единиц оргтехники, а также других данных,
+можно использовать любую подходящую структуру (например, словарь).
+
 6. Продолжить работу над вторым (FIXME 4м?) заданием.
 Реализуйте механизм валидации вводимых пользователем данных.
 Например, для указания количества принтеров, отправленных на склад, нельзя использовать строковый тип данных.
@@ -15,19 +20,7 @@ from random import randint
 import traceback
 import sys
 
-from task6 import check_method_args
-from functools import wraps
-
-
-def try_except_decorator(func):
-    @wraps(func)
-    def magic(self, *args, **kwards):
-        try:
-            return func(self, *args, **kwards)
-        except Exception:
-            sys.stdout.write(f'\r\033[33m{traceback.format_exc()}')
-            sys.stdout.write(f"\r\033[38m")
-    return magic
+from task6 import check_method_args, try_except_decorator
 
 
 class OfficeEquipment:
@@ -152,6 +145,23 @@ class OfficeEquipmentStorage:
             print('No such equipment. Use create_new_equip() for adding new position')
             return False
 
+    def remove_equip(self, equip_name: str, num: int) -> bool:
+        """
+        :param equip_name: str
+        :param num: int
+        :return: bool
+        """
+        if equip_name in self.__storage.keys():
+            if num <= self.__storage[equip_name]:
+                self.__storage[equip_name] -= num
+                return True
+            else:
+                print('There is no such quantity of devices')
+                return False
+        else:
+            print('No such equipment. Use create_new_equip() for adding new position')
+            return False
+
     @try_except_decorator
     def create_new_equip(self, equip: OfficeEquipment):
         """
@@ -217,6 +227,23 @@ class OfficeEquipmentStorage:
         self.__storage[device_type] -= 1
 
     @classmethod
+    def transfer(cls, stor1, stor2, product_dict: dict):
+        """
+        :param stor1:
+        :param stor2:
+        :param product_dict: {'printer': <int>,
+                              'scaner': <int>,
+                              ...}
+        :return:
+        """
+        for product, num in product_dict.items():
+            if stor1.__storage[product] >= num:
+                stor2.add_equip(product, num)
+                stor1.remove_equip(product, num)
+            else:
+                print(f'There is no such quantity of devices: {product}')
+
+    @classmethod
     @try_except_decorator
     # @check_method_args(str)
     def gen_id(cls, dev_type=''):
@@ -264,7 +291,26 @@ if __name__ == '__main__':
     print(storage.storage)
     storage.add_equip('printer', 10)
     print(storage.storage)
+    print('Попробуем удалить неавторизованных устройств на склад')
+    storage.remove_equip('scaner', 1)
+    print(storage.storage)
+    print('Попробуем удалить больше неавторизованных устройств на склад')
+    storage.remove_equip('scaner', 100)
+    print(storage.storage)
 
     print('Проверим работу контроля параметров')
     storage.add_equip('scaner', 'scaner')
     storage.add_equip()
+
+    print('Теперь проверим передачу устройств между складами')
+    storage2 = OfficeEquipmentStorage()
+    print('До передачи изделий:')
+    print(f'{storage.storage = }\n{storage2.storage = }')
+
+    OfficeEquipmentStorage.transfer(storage, storage2, {'printer':5})
+    print('После передачи изделий')
+    print(f'{storage.storage = }\n{storage2.storage = }')
+
+    print('Попробуем передать больше, чем есть')
+    OfficeEquipmentStorage.transfer(storage2, storage, {'scaner': 5})
+    print(f'{storage.storage = }\n{storage2.storage = }')
